@@ -1,10 +1,10 @@
 # VStarter
-适用于vue2, 基于vue-enty的前端快速开发框架
+适用于vue2, 基于vue-entry的前端快速开发框架
 
 ## 使用
 
 ```bash
-$ vue init litor/vstarter-template project1
+$ vue init litjs/vstarter-template project1
 $ cd project1
 $ npm install
 $ npm run dev
