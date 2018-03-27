@@ -8,20 +8,20 @@ var loaders = {}
 
 loaders.js = {
   test: /\.js$/i,
-  loader: 'babel',
+  loader: 'babel-loader',
 }
 
 loaders.js1 = {
   test: /\.js$/i,
   include: getEntryFilePath(vueEntryConfig),
   exclude: [/\/node_modules\//, /\/bower_components\//],
-  loader: 'babel',
+  loader: 'babel-loader',
 }
 
 loaders.configjson = {
   test: /config\.json$/i,
   exclude: [/\/components\//],
-  loader: 'file',
+  loader: 'file-loader',
   query: {
     context: getAppRootPath(vueEntryConfig),
     name: '[path][name].[ext]'
@@ -31,7 +31,7 @@ loaders.configjson = {
 loaders.indexhtml = {
   test: /index\.html$/i,
   exclude: [/\/components\//],
-  loader: 'file',
+  loader: 'file-loader',
   query: {
     context: getAppRootPath(vueEntryConfig),
     name: '[path][name].[ext]'
@@ -41,7 +41,7 @@ loaders.indexhtml = {
 loaders.i18n = {
   test: /\.lang\.json$/i,
   exclude: [/\/components\//],
-  loader: 'file',
+  loader: 'file-loader',
   query: {
     context: getEntryFilePath(vueEntryConfig),
     name: '[path][name].[ext]'
@@ -51,18 +51,18 @@ loaders.i18n = {
 loaders.config = {
   test: /config\.json$/i,
   exclude: [/\/pages\//, /\/components\//],
-  loader: 'file?name=[name].json'
+  loader: 'file-loader?name=[name].json'
 }
 
 loaders.html = {
   test: /\.html$/i,
   exclude: [/index\.html/],
-  loader: 'html',
+  loader: 'html-loader',
 }
 
 loaders.vue = {
   test: /\.vue$/i,
-  loader: 'vue',
+  loader: 'vue-loader',
 }
 
 loaders.promise = {
@@ -70,42 +70,25 @@ loaders.promise = {
   include: [/pages/],
   exclude: loaders.js.exclude,
   loaders: [
-    'promise?global,[name].promise',
-    'babel',
+    'promise-loader?global,[name].promise',
+    'babel-loader',
   ]
 }
 
-loaders.sassUsable = {
-  test: /\.useable\.(scss|sass)$/i,
-  loaders: [
-    'style/useable',
-    'css',
-    'sass',
-  ],
-}
-
-loaders.sass = {
-  test: /\.(scss|sass)$/i,
-  exclude: loaders.sassUsable.test,
-  loader: ExtractTextPlugin.extract('style',
-    loaders.sassUsable.loaders.slice(1).join('!')
-  ),
-}
 
 loaders.css = {
   test: /\.(css)$/i,
-  exclude: loaders.sassUsable.test,
   loader: ExtractTextPlugin.extract('style',
-    'css-loader'
+      'css-loader'
   ),
 }
 
 loaders.lessUsable = {
   test: /\.useable\.less$/i,
   loaders: [
-    'style/useable',
-    'css',
-    'less',
+    'style-loader/useable',
+    'css-loader',
+    'less-loader',
   ],
 }
 
@@ -113,13 +96,13 @@ loaders.less = {
   test: /\.less$/i,
   exclude: loaders.lessUsable.test,
   loader: ExtractTextPlugin.extract('style',
-    loaders.lessUsable.loaders.slice(1).join('!')
+      loaders.lessUsable.loaders.slice(1).join('!')
   ),
 }
 
 loaders.fonts = {
   test: /.*\.(ttf|eot|woff|woff2|svg)(\?.*)?$/i,
-  loader: 'url',
+  loader: 'url-loader',
   query: {
     limit: 0.01 * 1024,
     name: config.assets.fonts + '/[name]-[hash:5].[ext]',
@@ -128,7 +111,7 @@ loaders.fonts = {
 
 loaders.url = {
   test: /.*\.(gif|png|jpe?g|svg|ico)$/i,
-  loader: 'url',
+  loader: 'url-loader',
   query: {
     limit: 0.01 * 1024,
     name: '[path][name].[ext]',
@@ -151,8 +134,6 @@ var usedLoaders = [
   loaders.js,
   loaders.js1,
   loaders.html,
-  loaders.sass,
-  loaders.sassUsable,
   loaders.less,
   loaders.lessUsable,
   loaders.url,
