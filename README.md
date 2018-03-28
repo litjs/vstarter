@@ -136,3 +136,7 @@ app下vue自动导入并全局注册（此时需要保证单个app下vue的文�
         next // 函数 继续往下执行
     }
 ```
+
+## LICENSE
+
+[MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89)
