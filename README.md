@@ -3,7 +3,7 @@
 
 ## 使用方式
 
-```bash
+``` sh
 $ vue init litjs/vstarter-template project1
 $ cd project1
 $ npm install
@@ -78,7 +78,7 @@ computed: {
 ```
 
 ## 单独请求的配置文件
-    在应用index.html同级目录下，新建config.json文件即可。该文件不会被编译到项目代码中，浏览器访问应用时，会单独请求该文件。方便打包完成后依然需要修改配置的情况。
+在应用index.html同级目录下，新建config.json文件即可。该文件不会被编译到项目代码中，浏览器访问应用时，会单独请求该文件。方便打包完成后依然需要修改配置的情况。
 
 ### 在vue中如何使用config.json中的配置？
 在vue中通过this.$root.config即可访问到config.json中到内容。
@@ -114,11 +114,11 @@ export default { zh_CN ,  en_US};
 
 
 ## 自动导入app下的vue文件（应用下自己写的vue文件可以在template里直接使用，无需再import）
-    app下vue自动导入并全局注册（此时需要保证单个app下vue的文件名不能重名），多app模式下，app之间时相互独立的（app之间vue文件可以同名）。
+app下vue自动导入并全局注册（此时需要保证单个app下vue的文件名不能重名），多app模式下，app之间时相互独立的（app之间vue文件可以同名）。
     注：自动导入默认开启，如需关闭可在gulpfile.babel.js中配置autoImportVueComponent为false
     
 ## 代理配置
-    在gulpfile.babel.js中配置proxy项即可
+在gulpfile.babel.js中配置proxy项即可
 ``` js
 'proxy': [{ source: '/api/', target: 'http://172.16.6.150:8888' }] // 其中/api为需要代理的接口前缀，target是需要代理到的真实服务地址
 ```
