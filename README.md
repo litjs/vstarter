@@ -13,7 +13,7 @@ $ browser http://localhost:8082
 
 ## 编译环境配置
 gulpfile.babel.js配置参数说明
-```
+``` js
 {
     // 输出路径 相对于项目根目录
     dist:'./www/', 
@@ -45,7 +45,7 @@ gulpfile.babel.js配置参数说明
 在应用下新建后缀为".vuex.js"的文件，vstarter会自动识别并做vuex的相关配置(这些配置是在底层实现的，不掺合开发者对业务代码，并对开发者不可见)。
 
 ### 在vue中如何使用？
-```
+``` js
 computed: {
     ...Vuex.mapState({
       index: state => state.index
@@ -101,12 +101,12 @@ export default { zh_CN ,  en_US};
 ```
 
 在vue文件template中的使用方式：
-```
+``` html
     <div>{{$t('index.title')}}</div>
 ```
 
 在vue文件script中的使用方式：
-```
+``` js
     this.$t('index.title')
 ```
 
@@ -119,7 +119,7 @@ export default { zh_CN ,  en_US};
     
 ## 代理配置
     在gulpfile.babel.js中配置proxy项即可
-```
+``` js
 'proxy': [{ source: '/api/', target: 'http://172.16.6.150:8888' }] // 其中/api为需要代理的接口前缀，target是需要代理到的真实服务地址
 ```
     
