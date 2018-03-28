@@ -70,8 +70,8 @@ gulp.task('clean', function(cb){
   cb()
 })
 
-gulp.task('build', gulp.series(gulp.parallel('clean', 'webpack'),function(){
-
+gulp.task('build', gulp.series(gulp.parallel('clean', 'webpack'),function(cb){
+  cb()
 }))
 
 gulp.task('default', gulp.series('clean',gulp.parallel( 'webpack', 'connect'),function(cb){
