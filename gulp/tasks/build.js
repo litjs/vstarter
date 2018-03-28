@@ -14,7 +14,7 @@ import env from 'gulp-env'
 
 var envs = {NODE_ENV: config.NODE_ENV}
 
-gulp.task('webpack', function () {
+gulp.task('webpack', gulp.series(function (cb) {
     return gulp
         .src([__dirname+'/index.js'])
         .pipe(env.set(envs))
@@ -24,12 +24,12 @@ gulp.task('webpack', function () {
         .pipe(gulp.dest(config.argDist || config.dest))
         .pipe(connect.reload())
         .on('end', function(){
+            cb()
             if(config.isProduction){
                 process.exit()
             }
         })
-})
-
+}))
 
 gulp.task('connect', function(){
     connect.server({
