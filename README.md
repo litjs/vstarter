@@ -1,4 +1,5 @@
-# VStarter
+# VStarter [![Build Status](https://img.shields.io/circleci/project/litjs/vstarter/master.svg)](https://circleci.com/gh/litjs/vstarter) [![npm package](https://img.shields.io/npm/v/vstarter.svg)](https://www.npmjs.com/package/vstarter)
+
 适用于vue2, 基于vue-entry的前端快速开发框架， 让您更专注于业务代码。[demo工程](https://github.com/litjs/vstarter-app-demo)
 
 ## 使用方式 
