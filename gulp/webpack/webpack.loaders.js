@@ -75,12 +75,9 @@ loaders.promise = {
   ]
 }
 
-
 loaders.css = {
   test: /\.(css)$/i,
-  loader: ExtractTextPlugin.extract('style',
-      'css-loader'
-  ),
+  loader: 'style-loader!css-loader',
 }
 
 loaders.lessUsable = {
@@ -95,7 +92,7 @@ loaders.lessUsable = {
 loaders.less = {
   test: /\.less$/i,
   exclude: loaders.lessUsable.test,
-  loader: ExtractTextPlugin.extract('style',
+  loader: ExtractTextPlugin.extract('style-loader',
       loaders.lessUsable.loaders.slice(1).join('!')
   ),
 }
