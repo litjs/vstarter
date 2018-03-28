@@ -1,7 +1,7 @@
 # VStarter
-适用于vue2, 基于vue-entry的前端快速开发框架， 让您更专注于业务代码。
+适用于vue2, 基于vue-entry的前端快速开发框架， 让您更专注于业务代码。[demo工程](https://github.com/litjs/vstarter-app-demo)
 
-## 使用方式 [demo工程](https://github.com/litjs/vstarter-app-demo)
+## 使用方式 
 
 ``` sh
 $ vue init litjs/vstarter-template project1
