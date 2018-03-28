@@ -22,7 +22,6 @@ gulp.task('webpack', gulp.series(function (cb) {
         .pipe(named())
         .pipe(webpackGulp(configWebpack))
         .pipe(gulp.dest(config.argDist || config.dest))
-        .pipe(connect.reload())
         .on('end', function(){
             cb()
             if(config.isProduction){
@@ -66,10 +65,6 @@ gulp.task('clean', function(){
     }
 })
 
-gulp.task('build', gulp.series(gulp.parallel('clean', 'webpack'),function(){
+gulp.task('build', gulp.series('clean', 'webpack'))
 
-}))
-
-gulp.task('default', gulp.series(gulp.parallel('clean', 'webpack', 'connect'),function(){
-
-}))
+gulp.task('default', gulp.series('clean', 'webpack', 'connect'))
