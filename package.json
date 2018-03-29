@@ -1,6 +1,6 @@
 {
   "name": "vstarter",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
@@ -53,7 +53,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
     "vinyl-named": "^1.1.0",
-    "vue-entry": "^2.0.8",
+    "vue-entry": "^3.0.0",
     "vue-loader": "^11.1.2",
     "webpack-stream": "4.0.3"
   },
