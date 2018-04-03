@@ -23,7 +23,7 @@ let webpackConfig = {
   output: {
     publicPath: singleAppMode ? './' : '../',
     filename: config.isDeveloper ? '[name].js' : '[name]-[chunkhash].js',
-    chunkFilename: 'statics/chunk/[name]-[id].js',
+    chunkFilename: 'statics/chunk/[chunkhash]-[id].js',
   },
 
   watch: config.isDeveloper,
