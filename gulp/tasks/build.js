@@ -34,7 +34,8 @@ gulp.task('webpack', gulp.series(function (cb) {
 
 
 gulp.task('connect', function(cb){
-  connect.server({
+  var connect = connect.server({
+    host:'0.0.0.0',
     root: config.dest,
     port: config.server.port || '8081',
     livereload: true,
@@ -56,6 +57,10 @@ gulp.task('connect', function(cb){
 
       return proxys
     }
+  })
+
+  connect.server.on('close', function () {
+
   })
   cb()
 })
