@@ -11,6 +11,7 @@ import named from 'vinyl-named'
 
 import configWebpack from '../webpack'
 import env from 'gulp-env'
+var net = require('net');
 
 var envs = {NODE_ENV: config.NODE_ENV}
 
@@ -34,35 +35,38 @@ gulp.task('webpack', gulp.series(function (cb) {
 
 
 gulp.task('connect', function(cb){
-  var connect = connect.server({
-    host:'0.0.0.0',
-    root: config.dest,
-    port: config.server.port || '8081',
-    livereload: true,
-    middleware: function (connect, opt) {
-      let proxys = []
+  var innerConnect = connect
+  getPort().then((res)=>{
+    var connect = innerConnect.server({
+      host:'0.0.0.0',
+      root: config.dest,
+      port: config.server.port || res.port,
+      livereload: true,
+      middleware: function (connect, opt) {
+        let proxys = []
 
-      if (config.proxy) {
-        for (let i = 0; i < config.proxy.length; i++) {
-          proxys.push(proxy(config.proxy[i].source, {
-            target: config.proxy[i].target,
-            changeOrigin: true,
-            secure: false,
-            headers: {
-              Connection: 'keep-alive'
-            }
-          }))
+        if (config.proxy) {
+          for (let i = 0; i < config.proxy.length; i++) {
+            proxys.push(proxy(config.proxy[i].source, {
+              target: config.proxy[i].target,
+              changeOrigin: true,
+              secure: false,
+              headers: {
+                Connection: 'keep-alive'
+              }
+            }))
+          }
         }
+
+        return proxys
       }
+    })
 
-      return proxys
-    }
+    connect.server.on('close', function () {
+
+    })
+    cb()
   })
-
-  connect.server.on('close', function () {
-
-  })
-  cb()
 })
 
 gulp.task('clean', function(cb){
@@ -82,3 +86,37 @@ gulp.task('build', gulp.series(gulp.parallel('clean', 'webpack'),function(cb){
 gulp.task('default', gulp.series('clean',gulp.parallel( 'webpack', 'connect'),function(cb){
   cb()
 }))
+
+function getPort() {
+  return new Promise(function (resolve, reject) {
+    function checkportIsOccupied(port) {
+      portIsOccupied(port).then((res)=>{
+        if(res){
+          resolve({port:port})
+        }else{
+          checkportIsOccupied(port+1)
+        }
+      })
+    }
+
+    checkportIsOccupied(8080)
+  })
+}
+
+// 检测端口是否被占用
+function portIsOccupied (port) {
+  // 创建服务并监听该端口
+  return new Promise(function (resolve, reject) {
+    var server = net.createServer().listen(port, '0.0.0.0')
+    server.on('listening', function () { // 执行这块代码说明端口未被占用
+      server.close() // 关闭服务
+      resolve(true)
+    })
+
+    server.on('error', function (err) {
+      if (err.code === 'EADDRINUSE') { // 端口已经被使用
+        resolve(false)
+      }
+    })
+  })
+}

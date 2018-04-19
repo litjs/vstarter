@@ -38,6 +38,6 @@ export default {
   env: userConfig['process.env'],
 
   server: {
-    port: userConfig.port || 8081,
+    port: userConfig.port,
   },
 }
