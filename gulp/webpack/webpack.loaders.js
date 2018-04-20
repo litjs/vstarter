@@ -34,7 +34,7 @@ loaders.indexhtml = {
   loader: 'file-loader',
   query: {
     context: getAppRootPath(vueEntryConfig),
-    name: '[path][name].[ext]'
+    name: config.singleApp?'[name].[ext]':'[path][name].[ext]'
   }
 };
 
