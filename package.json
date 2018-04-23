@@ -1,6 +1,6 @@
 {
   "name": "vstarter",
-  "version": "1.0.6",
+  "version": "1.0.12",
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
@@ -16,8 +16,10 @@
     "ajv": "^6.4.0",
     "autoprefixer": "^6.1.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-plugin-transform-vue-jsx": "^3.5.0",
     "chokidar": "^1.6.1",
     "colors": "^1.1.2",
@@ -53,7 +55,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8",
     "vinyl-named": "^1.1.0",
-    "vue-entry": "^3.0.0",
+    "vue-entry": "^3.0.2",
     "vue-loader": "^11.1.2",
     "webpack-stream": "4.0.3"
   },
