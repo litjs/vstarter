@@ -10,7 +10,6 @@ export default {
     vueLibBuildIn:true,
     components: './src/components',
     pages: './src/pages',
-    singleApp:userConfig.singleApp,
     autoImportVueComponent:userConfig.autoImportVueComponent,
     exportName: 'VStarter'
   },
@@ -21,7 +20,6 @@ export default {
   src: './src',
   dest: userConfig.dist || './dist',
   app: '/app',
-  singleApp:userConfig.singleApp,
 
   argDist:dist,
 

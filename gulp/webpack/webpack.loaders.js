@@ -1,7 +1,7 @@
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import config from '../config'
 import path from 'path'
-import {getEntryFilePath, getAppRootPath} from 'vue-entry/dist/bootstrap/utils'
+import {getEntryFilePath, getAppRootPath, isSingleAppMode} from 'vue-entry/dist/bootstrap/utils'
 var vueEntryConfig = config.vueEntryConfig
 
 var loaders = {}
@@ -34,7 +34,7 @@ loaders.indexhtml = {
   loader: 'file-loader',
   query: {
     context: getAppRootPath(vueEntryConfig),
-    name: config.singleApp?'[name].[ext]':'[path][name].[ext]'
+    name: isSingleAppMode(vueEntryConfig)?'[name].[ext]':'[path][name].[ext]'
   }
 };
 
