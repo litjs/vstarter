@@ -79,11 +79,24 @@ gulp.task('clean', function(cb){
   cb()
 })
 
-gulp.task('build', gulp.series(gulp.parallel('clean', 'webpack'),function(cb){
+gulp.task('copystatics', function (cb) {
+  var dest = config.dest
+
+  try {
+    gulp.src('src/statics/asset/**/*')
+      .pipe(gulp.dest(dest+'/statics/asset'))
+
+  } catch (e) {
+    console.log('%s do not clean', dest);
+  }
+  cb()
+});
+
+gulp.task('build', gulp.series(gulp.parallel('clean', 'webpack', 'copystatics'),function(cb){
   cb()
 }))
 
-gulp.task('default', gulp.series('clean',gulp.parallel( 'webpack', 'connect'),function(cb){
+gulp.task('default', gulp.series('clean',gulp.parallel( 'webpack', 'connect', 'copystatics'),function(cb){
   cb()
 }))
 
