@@ -28,7 +28,7 @@ var plugins = [
     'process.env':Object.assign({}, {'NODE_ENV':`'${config.NODE_ENV}'`}, config.env)
   })
 ]
-plugins.push(new entryHashWebpackPlugin({isProduction:config.isProduction, entryName:'__main_entry__'}))
+plugins.push(new entryHashWebpackPlugin({isProduction:config.isProduction, entryName:config.vueEntryConfig.chunkName}))
 config.isProduction && plugins.push(
   new webpack.optimize.UglifyJsPlugin({
     compress: {

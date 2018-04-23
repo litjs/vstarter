@@ -11,7 +11,8 @@ export default {
     components: './src/components',
     pages: './src/pages',
     autoImportVueComponent:userConfig.autoImportVueComponent,
-    exportName: 'VStarter'
+    exportName: 'VStarter',
+    chunkName:userConfig.chunkName || 'app'
   },
 
   rootFontSize: userConfig.rootFontSize,
