@@ -11,7 +11,7 @@ export default {
     components: './src/components',
     pages: './src/pages',
     autoImportVueComponent:userConfig.autoImportVueComponent,
-    exportName: 'VStarter',
+    exportName: userConfig.exportName || 'VStarter',
     chunkName:userConfig.chunkName || 'app'
   },
 
