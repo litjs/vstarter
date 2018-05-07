@@ -8,14 +8,15 @@ var loaders = {}
 
 loaders.js = {
   test: /\.js$/i,
-  loader: 'babel-loader',
+  //loader: 'babel-loader',
+  loader: 'happypack/loader?id=happybabel'
 }
 
 loaders.js1 = {
   test: /\.js$/i,
   include: getEntryFilePath(vueEntryConfig),
   exclude: [/\/node_modules\//, /\/bower_components\//],
-  loader: 'babel-loader',
+  loader: 'happypack/loader?id=happybabel'
 }
 
 loaders.configjson = {
@@ -62,7 +63,7 @@ loaders.html = {
 
 loaders.vue = {
   test: /\.vue$/i,
-  loader: 'vue-loader',
+  loader: 'happypack/loader?id=happyvue'
 }
 
 loaders.promise = {

@@ -4,8 +4,24 @@ import webpack from 'webpack'
 import path from 'path'
 import config from '../config'
 import entryHashWebpackPlugin from 'entry-hash-webpack-plugin'
+var HappyPack = require('happypack');
+var os = require('os')
+var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 var plugins = [
+  new HappyPack({
+    id: 'happybabel',
+    loaders: ['babel-loader'],
+    threadPool: happyThreadPool,
+    verbose: false
+  }),
+
+  new HappyPack({
+    id: 'happyvue',
+    loaders: ['vue-loader'],
+    threadPool: happyThreadPool,
+    verbose: false
+  }),
 
   // fix for moment
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
