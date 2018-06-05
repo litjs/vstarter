@@ -1,6 +1,6 @@
 {
   "name": "vstarter",
-  "version": "1.0.13",
+  "version": "1.0.17",
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
@@ -39,6 +39,7 @@
     "gulp-notify": "^3.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-uglify": "^2.0.0",
+    "happypack": "^4.0.1",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.24.1",
     "http-proxy-middleware": "^0.17.1",
